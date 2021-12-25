@@ -1,0 +1,11 @@
+﻿  moreCubes.cpp
+d:\git_repo\noteforopengl\viewtransformation\viewtransformation\viewtransformation\viewtransformation\morecubes.cpp(246): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\git_repo\noteforopengl\viewtransformation\viewtransformation\viewtransformation\viewtransformation\morecubes.cpp(247): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\git_repo\noteforopengl\viewtransformation\viewtransformation\viewtransformation\viewtransformation\morecubes.cpp(255): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+MSVCRT.lib(initializers.obj) : warning LNK4098: 默认库“msvcrtd.lib”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  正在生成代码
+  4 of 567 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  viewTransformation.vcxproj -> D:\git_repo\noteForOpenGL\viewTransformation\viewTransformation\viewTransformation\Release\viewTransformation.exe
