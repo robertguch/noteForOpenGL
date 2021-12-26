@@ -4,11 +4,13 @@
 // 引入GLFW库
 #include <GLFW/glfw3.h>
 // 引入SOIL库
-#include <SOIL/SOIL.h>
+
+#include <Simple_OpenGL_Image_Library/src/soil.h>
 // 引入GLM库
 #include <GLM/glm.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/gtc/type_ptr.hpp>
+
 
 #include <iostream>
 #include <vector>
@@ -17,6 +19,17 @@
 #include "shader.h"
 // 包含纹理加载辅助类
 #include "texture.h"
+
+#pragma comment(lib, "legacy_stdio_definitions.lib") //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__sscanf
+#pragma comment(lib, "OpenGL32.lib")  //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__glBindTexture@8
+#ifdef NDEBUG
+	#pragma comment(lib, "libglew32.lib")
+	#pragma comment(lib, "glfw3.lib")
+#else
+	#pragma comment(lib, "libglew32d.lib")
+	#pragma comment(lib, "glfw3d.lib")
+#endif
+//#pragma comment(lib, "soil.lib")
 
 // 键盘回调函数原型声明
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -157,7 +170,7 @@ int main(int argc, char** argv)
 	Shader shader("cube.vertex", "cube.frag");
 
 	// Section3 准备纹理对象
-	GLint textureId = TextureHelper::load2DTexture("../../resources/textures/cat.png");
+	GLint textureId = TextureHelper::load2DTexture("../../../../resources/textures/cat.png");
 
 	glEnable(GL_DEPTH_TEST);
 	// 开始游戏主循环
