@@ -4,7 +4,7 @@
 // 引入GLFW库
 #include <GLFW/glfw3.h>
 // 引入SOIL库
-#include <SOIL/SOIL.h>
+#include <Simple_OpenGL_Image_Library/src/soil.h>
 
 #include <iostream>
 #include <vector>
@@ -13,6 +13,16 @@
 #include "shader.h"
 // 包含纹理加载辅助类
 #include "texture.h"
+
+#pragma comment(lib, "legacy_stdio_definitions.lib") //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__sscanf
+#pragma comment(lib, "OpenGL32.lib")  //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__glBindTexture@8
+#ifdef NDEBUG
+#pragma comment(lib, "libglew32.lib")
+#pragma comment(lib, "glfw3.lib")
+#else
+#pragma comment(lib, "libglew32d.lib")
+#pragma comment(lib, "glfw3d.lib")
+#endif
 
 // 键盘回调函数原型声明
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -112,8 +122,8 @@ int main(int argc, char** argv)
 	Shader shader("triangle.vertex", "triangle.frag");
 
 	// Section3 准备纹理对象
-	GLint textureId1 = TextureHelper::load2DTexture("../../resources/textures/wood.png");
-	GLint textureId2 = TextureHelper::load2DTexture("../../resources/textures/cat.png");
+	GLint textureId1 = TextureHelper::load2DTexture("../../../../resources/textures/wood.png");
+	GLint textureId2 = TextureHelper::load2DTexture("../../../../resources/textures/cat.png");
 
 	// 开始游戏主循环
 	while (!glfwWindowShouldClose(window))

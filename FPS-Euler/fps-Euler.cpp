@@ -4,7 +4,7 @@
 // 引入GLFW库
 #include <GLFW/glfw3.h>
 // 引入SOIL库
-#include <SOIL/SOIL.h>
+#include <Simple_OpenGL_Image_Library/src/soil.h>
 // 引入GLM库
 #include <GLM/glm.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
@@ -12,6 +12,16 @@
 
 #include <iostream>
 #include <vector>
+
+#pragma comment(lib, "legacy_stdio_definitions.lib") //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__sscanf
+#pragma comment(lib, "OpenGL32.lib")  //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__glBindTexture@8
+#ifdef NDEBUG
+	#pragma comment(lib, "libglew32.lib")
+	#pragma comment(lib, "glfw3.lib")
+#else
+	#pragma comment(lib, "libglew32d.lib")
+	#pragma comment(lib, "glfw3d.lib")
+#endif
 
 // 包含着色器加载库
 #include "shader.h"
@@ -138,13 +148,13 @@ int main(int argc, char** argv)
 		-0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,	// A
 	};
 	glm::vec3 cubePostitions[] = {
-		glm::vec3(0.0f, 0.0f, 1.2f),
+//		glm::vec3(0.0f, 0.0f, 1.2f),
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(1.2f, 1.2f, 0.0f),
-		glm::vec3(-1.2f, 1.2f, 0.0f),
-		glm::vec3(-1.2f, -1.5f, 0.0f),
-		glm::vec3(1.2f, -1.5f, 0.0f),
-		glm::vec3(0.0f, 0.0f, -1.2f),
+//		glm::vec3(-1.2f, 1.2f, 0.0f),
+//		glm::vec3(-1.2f, -1.5f, 0.0f),
+//		glm::vec3(1.2f, -1.5f, 0.0f),
+//		glm::vec3(0.0f, 0.0f, -1.2f),
 	};
 
 	// 创建缓存对象
@@ -176,7 +186,7 @@ int main(int argc, char** argv)
 	Shader shader("cube.vertex", "cube.frag");
 
 	// Section3 准备纹理对象
-	GLint textureId = TextureHelper::load2DTexture("../../resources/textures/cat.png");
+	GLint textureId = TextureHelper::load2DTexture("../../../resources/textures/cat.png");
 
 	glEnable(GL_DEPTH_TEST);
 	// 开始游戏主循环

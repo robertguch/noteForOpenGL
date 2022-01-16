@@ -4,7 +4,7 @@
 // 引入GLFW库
 #include <GLFW/glfw3.h>
 // 引入SOIL库
-#include <SOIL/SOIL.h>
+#include <Simple_OpenGL_Image_Library/src/soil.h>
 // 引入GLM库
 #include <GLM/glm.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
@@ -21,6 +21,17 @@
 #include "texture.h"
 // 加载模型的类
 #include "model.h"
+
+#pragma comment(lib, "legacy_stdio_definitions.lib") //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__sscanf
+#pragma comment(lib, "OpenGL32.lib")  //if not use this line,will:error LNK2001: 无法解析的外部符号 __imp__glBindTexture@8
+#pragma comment(lib, "assimp-vc141-mtd.lib")
+#ifdef NDEBUG
+#pragma comment(lib, "libglew32.lib")
+#pragma comment(lib, "glfw3.lib")
+#else
+#pragma comment(lib, "libglew32d.lib")
+#pragma comment(lib, "glfw3d.lib")
+#endif
 
 // 键盘回调函数原型声明
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -98,7 +109,8 @@ int main(int argc, char** argv)
 	
 	//Section1 加载模型数据
 	Model objModel;
-	if (!objModel.loadModel("../../resources/models/nanosuit/nanosuit.obj"))
+//	if (!objModel.loadModel("../../../../resources/models/nanosuit/nanosuit.obj"))
+	if (!objModel.loadModel("../../../../resources/models/SmallTropicalIsland/SmallTropicalIsland.obj"))
 	{
 		glfwTerminate();
 		std::system("pause");
